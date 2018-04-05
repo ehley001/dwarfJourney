@@ -32,8 +32,8 @@
                                         <color key="backgroundColor" red="0.58281165361404419" green="0.42782819271087646" blue="0.70104515552520752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j75-xY-Ccg">
-                                        <rect key="frame" x="64" y="602" width="247" height="45"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="20" y="602" width="335" height="45"/>
+                                        <color key="backgroundColor" red="0.40234342217445374" green="0.23337773978710175" blue="0.57265019416809082" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="tgb-hT-FEG"/>
                                         </constraints>
@@ -46,6 +46,10 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="j75-xY-Ccg" firstAttribute="leading" secondItem="RGS-X1-fjo" secondAttribute="leading" constant="20" id="04c-AL-1LS"/>
+                                    <constraint firstAttribute="trailing" secondItem="j75-xY-Ccg" secondAttribute="trailing" constant="20" id="RkL-5g-J57"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
