@@ -28,14 +28,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Asset 1" translatesAutoresizingMaskIntoConstraints="NO" id="jcc-qg-LBK">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
                                         <color key="backgroundColor" red="0.58281165361404419" green="0.42782819271087646" blue="0.70104515552520752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j75-xY-Ccg">
-                                        <rect key="frame" x="20" y="602" width="335" height="45"/>
+                                        <rect key="frame" x="20" y="597" width="335" height="50"/>
                                         <color key="backgroundColor" red="0.40234342217445374" green="0.23337773978710175" blue="0.57265019416809082" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="tgb-hT-FEG"/>
+                                            <constraint firstAttribute="height" constant="50" id="tgb-hT-FEG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Copperplate-Bold" family="Copperplate" pointSize="32"/>
                                         <state key="normal" title="Start Journey">
@@ -73,13 +73,53 @@
                     <view key="view" contentMode="scaleToFill" id="3NN-Pb-rr0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K9P-de-X9e">
+                                <rect key="frame" x="10" y="20" width="355" height="637"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightPaper" translatesAutoresizingMaskIntoConstraints="NO" id="CKH-Xq-J5c">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="551"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0VR-yg-M01">
+                                        <rect key="frame" x="0.0" y="551" width="355" height="86"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JwE-dM-BKk">
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="39"/>
+                                                <color key="backgroundColor" red="0.40234342220000002" green="0.23337773980000001" blue="0.57265019419999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="26"/>
+                                                <state key="normal" title="Choice 1">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-gT-VmF">
+                                                <rect key="frame" x="0.0" y="47" width="355" height="39"/>
+                                                <color key="backgroundColor" red="0.40234342220000002" green="0.23337773980000001" blue="0.57265019419999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="26"/>
+                                                <state key="normal" title="Choice 2">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="86" id="mvL-7P-hXO"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K9P-de-X9e" firstAttribute="leading" secondItem="LIA-7e-CkN" secondAttribute="leading" constant="10" id="Mic-ma-EYb"/>
+                            <constraint firstItem="K9P-de-X9e" firstAttribute="top" secondItem="LIA-7e-CkN" secondAttribute="top" id="ZFH-lq-hCH"/>
+                            <constraint firstItem="LIA-7e-CkN" firstAttribute="bottom" secondItem="K9P-de-X9e" secondAttribute="bottom" constant="10" id="b98-tC-PzP"/>
+                            <constraint firstAttribute="trailing" secondItem="K9P-de-X9e" secondAttribute="trailing" constant="10" id="wUF-DW-OW1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LIA-7e-CkN"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SV8-fG-d3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="869"/>
+            <point key="canvasLocation" x="117.59999999999999" y="868.51574212893559"/>
         </scene>
         <!--Combat Screen-->
         <scene sceneID="Zik-Gu-EDb">
@@ -187,5 +227,6 @@
     </scenes>
     <resources>
         <image name="Asset 1" width="1249" height="2208"/>
+        <image name="lightPaper" width="640" height="533"/>
     </resources>
 </document>
