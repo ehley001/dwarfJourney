@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2122CC1C207E9E4E00277BEC /* combatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122CC1B207E9E4E00277BEC /* combatScreen.swift */; };
 		2173785A207D7ECD0050B27F /* statScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21737859207D7ECD0050B27F /* statScreen.swift */; };
-		2173785C207D7EDE0050B27F /* combatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173785B207D7EDE0050B27F /* combatScreen.swift */; };
 		218C4231207439DA004BBD16 /* storyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C4230207439DA004BBD16 /* storyScreen.swift */; };
 		21B1A88B2058718600B1F767 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B1A88A2058718600B1F767 /* AppDelegate.swift */; };
 		21B1A88D2058718600B1F767 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B1A88C2058718600B1F767 /* ViewController.swift */; };
@@ -37,8 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2122CC1B207E9E4E00277BEC /* combatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = combatScreen.swift; sourceTree = "<group>"; };
 		21737859207D7ECD0050B27F /* statScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statScreen.swift; sourceTree = "<group>"; };
-		2173785B207D7EDE0050B27F /* combatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = combatScreen.swift; sourceTree = "<group>"; };
 		218C4230207439DA004BBD16 /* storyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storyScreen.swift; sourceTree = "<group>"; };
 		21B1A8872058718600B1F767 /* dwarfJourney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dwarfJourney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B1A88A2058718600B1F767 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 				21B1A8932058718600B1F767 /* LaunchScreen.storyboard */,
 				21B1A8962058718600B1F767 /* Info.plist */,
 				218C4230207439DA004BBD16 /* storyScreen.swift */,
-				2173785B207D7EDE0050B27F /* combatScreen.swift */,
 				21737859207D7ECD0050B27F /* statScreen.swift */,
+				2122CC1B207E9E4E00277BEC /* combatScreen.swift */,
 			);
 			path = dwarfJourney;
 			sourceTree = "<group>";
@@ -272,7 +272,7 @@
 				21B1A88D2058718600B1F767 /* ViewController.swift in Sources */,
 				21B1A88B2058718600B1F767 /* AppDelegate.swift in Sources */,
 				2173785A207D7ECD0050B27F /* statScreen.swift in Sources */,
-				2173785C207D7EDE0050B27F /* combatScreen.swift in Sources */,
+				2122CC1C207E9E4E00277BEC /* combatScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
