@@ -15,6 +15,9 @@ class combatScreen: UIViewController {
     @IBOutlet weak var healthLbl: UILabel!
     @IBOutlet weak var luckLbl: UILabel!
     
+    @IBOutlet weak var userLbl: UITextView!
+    @IBOutlet weak var opponentLbl: UITextView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,16 @@ class combatScreen: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func btnFight(_ sender: UIButton) {
+        
+    
+    }
+    
+    @IBAction func btnLuck(_ sender: UIButton) {
+        
+        
     }
     
     
