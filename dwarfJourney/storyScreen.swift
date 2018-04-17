@@ -24,5 +24,8 @@ class storyScreen: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    enum BinaryTree<T>{
+        case empty
+        indirect case node(BinaryTree, T, BinaryTree)
+    }
 }
