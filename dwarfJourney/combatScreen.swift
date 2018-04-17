@@ -11,6 +11,11 @@ import UIKit
 
 class combatScreen: UIViewController {
     
+    @IBOutlet weak var strLbl: UILabel!
+    @IBOutlet weak var healthLbl: UILabel!
+    @IBOutlet weak var luckLbl: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

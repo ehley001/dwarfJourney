@@ -278,6 +278,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zhE-Kg-kjL"/>
                     </view>
+                    <connections>
+                        <outlet property="healthLbl" destination="ZFM-m9-mfG" id="zWP-Rg-Dmg"/>
+                        <outlet property="luckLbl" destination="JKw-HT-V1W" id="W0H-kz-SI0"/>
+                        <outlet property="strLbl" destination="u9A-9W-2n0" id="Wba-Nd-K3O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCB-NO-vBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
