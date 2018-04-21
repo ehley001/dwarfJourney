@@ -53,9 +53,9 @@ class statScreen: UIViewController {
     func calcStrength(){
         var first = 0, second = 0, sum = 0
         
-        first = dice.nextInt()
+        first = dice.nextInt()  //getting the random dice rolls
         second = dice.nextInt()
-        sum = first + second + strengthMod
+        sum = first + second + strengthMod  //adding them together with the modifier
         
         strengthLbl.text = String(sum)
         
@@ -64,9 +64,9 @@ class statScreen: UIViewController {
     func calcHealth(){
         var first = 0, second = 0, sum = 0
         
-        first = dice.nextInt()
+        first = dice.nextInt()  //getting the random dice rolls
         second = dice.nextInt()
-        sum = first + second + healthMod
+        sum = first + second + healthMod  //adding them together with the modifier
         
         healthLbl.text = String(sum)
     }
@@ -74,9 +74,9 @@ class statScreen: UIViewController {
     func calcLuck(){
         var first = 0, second = 0, sum = 0
         
-        first = dice.nextInt()
+        first = dice.nextInt()  //getting the random dice rolls
         second = dice.nextInt()
-        sum = first + second
+        sum = first + second   //adding them together
         
         luckLbl.text = String(sum)
     }

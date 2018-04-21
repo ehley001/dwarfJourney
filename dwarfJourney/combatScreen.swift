@@ -8,6 +8,7 @@
 import Foundation
 
 import UIKit
+import GameplayKit
 
 class combatScreen: UIViewController {
     
@@ -17,6 +18,10 @@ class combatScreen: UIViewController {
     
     @IBOutlet weak var userLbl: UITextView!
     @IBOutlet weak var opponentLbl: UITextView!
+    
+    //Using GK to get a random number for a 6 sided dice
+    let dice = GKRandomDistribution.d6();
+   
     
     
     override func viewDidLoad() {
@@ -37,6 +42,7 @@ class combatScreen: UIViewController {
     }
     
     @IBAction func btnLuck(_ sender: UIButton) {
+        //if luck is pressed, damage will either increase or decrease, depending on the roll
         
         
     }
