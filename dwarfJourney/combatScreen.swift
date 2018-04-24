@@ -19,6 +19,10 @@ class combatScreen: UIViewController {
     @IBOutlet weak var userLbl: UITextView!
     @IBOutlet weak var opponentLbl: UITextView!
     
+    var strString = ""
+    var hltString = ""
+    var lckString = ""
+    
     //Using GK to get a random number for a 6 sided dice
     let dice = GKRandomDistribution.d6();
     
@@ -34,9 +38,9 @@ class combatScreen: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        strLbl.text = String(statistics.strength)
-        healthLbl.text = String(statistics.health)
-        luckLbl.text = String(statistics.luck)
+       strLbl.text = strString
+        healthLbl.text = hltString
+        luckLbl.text = lckString
     }
    
     

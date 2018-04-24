@@ -388,7 +388,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="1qt-ek-QMC" kind="presentation" id="UsQ-KE-R7y"/>
+                                                    <segue destination="ycJ-RK-oBd" kind="show" id="oMq-vw-8L7"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -437,4 +437,7 @@
         <image name="background1" width="1242" height="2208"/>
         <image name="lightPaper" width="640" height="533"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oMq-vw-8L7"/>
+    </inferredMetricsTieBreakers>
 </document>

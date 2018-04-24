@@ -25,7 +25,7 @@ class statScreen: UIViewController {
     
     let strengthMod = 5
     let healthMod = 10
-    
+    var strength = 0, lck = 0, hlt = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class statScreen: UIViewController {
         first = dice.nextInt()  //getting the random dice rolls
         second = dice.nextInt()
         sum = first + second + strengthMod  //adding them together with the modifier
-        
+        strength = sum
         strengthLbl.text = String(sum)
         
     }
@@ -68,7 +68,7 @@ class statScreen: UIViewController {
         first = dice.nextInt()  //getting the random dice rolls
         second = dice.nextInt()
         sum = first + second + healthMod  //adding them together with the modifier
-        
+        hlt = sum
         healthLbl.text = String(sum)
     }
     
@@ -78,8 +78,17 @@ class statScreen: UIViewController {
         first = dice.nextInt()  //getting the random dice rolls
         second = dice.nextInt()
         sum = first + second   //adding them together
-        
+        lck = sum
         luckLbl.text = String(sum)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is combatScreen{
+            let vc = segue.destination as? combatScreen
+            vc?.strString = String(strength)
+            vc?.hltString = String(hlt)
+            vc?.lckString = String(lck)
+        }
     }
     
 }
