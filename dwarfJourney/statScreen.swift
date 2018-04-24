@@ -48,6 +48,7 @@ class statScreen: UIViewController {
         sender.isEnabled = false      // disabling roll so you can only roll once
         continueBtn.isEnabled = true  // The user can now move on to the story
         
+        
     }
     
     func calcStrength(){

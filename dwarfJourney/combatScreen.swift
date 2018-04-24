@@ -21,6 +21,23 @@ class combatScreen: UIViewController {
     
     //Using GK to get a random number for a 6 sided dice
     let dice = GKRandomDistribution.d6();
+    
+    var statistics: stats!{
+        didSet{
+            strLbl.text = String(statistics.strength)
+            healthLbl.text = String(statistics.health)
+            luckLbl.text = String(statistics.luck)
+            
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        strLbl.text = String(statistics.strength)
+        healthLbl.text = String(statistics.health)
+        luckLbl.text = String(statistics.luck)
+    }
    
     
     
