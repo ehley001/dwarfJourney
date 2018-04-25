@@ -71,22 +71,37 @@ class combatScreen: UIViewController {
         
         // TODO look into using switch stament instead
         
-        if(userScore > goblinScore){
-            //user wins
-           userLbl.text = "You won!"
-           baseHealth -= 2
-           opponentLbl.text = String(baseHealth)
+
+        switch userScore {
+            // user wins
+        case _ where userScore > goblinScore:
+            userLbl.text = "You won!"
+            baseHealth -= 2
+            opponentLbl.text = String(baseHealth)
             
-        } else if (goblinScore > userScore){
             //goblin wins
+        case _ where userScore < goblinScore:
             userLbl.text = "You lost!"
             userHealth -= 2
             healthLbl.text = String(userHealth)
-        } else{
+        
+        default:
             //tie
             userLbl.text = "You tied!"
         }
         
+        if(baseHealth < 1){
+            opponentLbl.text = "Goblin is dead"
+        }
+        
+        if(userHealth < 1){
+            userLbl.text = "You died"
+        }
+        
+     
+        
+        
+
         if(isLuckPressed == true){
             isLuckPressed = false // reset the flag
         }
