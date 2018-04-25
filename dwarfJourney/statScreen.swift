@@ -82,14 +82,24 @@ class statScreen: UIViewController {
         luckLbl.text = String(sum)
     }
     
+    // segue code
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is combatScreen{
             let vc = segue.destination as? combatScreen
             vc?.strString = String(strength)
             vc?.hltString = String(hlt)
             vc?.lckString = String(lck)
+            vc?.userStrength = strength
+            vc?.userHealth = hlt
         }
     }
+
+    //practicing encoding as done in class
+//    override func encode(with aCoder: NSCoder) {
+//        aCoder.encode(strength, forKey:"strength")
+//        aCoder.encode(hlt, forKey:"health")
+//        aCoder.encode(lck, forKey:"luck")
+//    }
     
 }
 

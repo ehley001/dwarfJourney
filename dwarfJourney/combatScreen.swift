@@ -23,17 +23,21 @@ class combatScreen: UIViewController {
     var hltString = ""
     var lckString = ""
     
+    var baseStrength = 10, baseHealth = 15
+    var userStrength = 0, userHealth = 0  // will later get set to whatever the user rolled
+    var isLuckPressed = false
+    
     //Using GK to get a random number for a 6 sided dice
     let dice = GKRandomDistribution.d6();
     
-    var statistics: stats!{
-        didSet{
-            strLbl.text = String(statistics.strength)
-            healthLbl.text = String(statistics.health)
-            luckLbl.text = String(statistics.luck)
-            
-        }
-    }
+//    var statistics: stats!{
+//        didSet{
+//            strLbl.text = String(statistics.strength)
+//            healthLbl.text = String(statistics.health)
+//            luckLbl.text = String(statistics.luck)
+//
+//        }
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,6 +45,7 @@ class combatScreen: UIViewController {
        strLbl.text = strString
         healthLbl.text = hltString
         luckLbl.text = lckString
+        opponentLbl.text = String(baseHealth)
     }
    
     
@@ -58,13 +63,51 @@ class combatScreen: UIViewController {
     }
     
     @IBAction func btnFight(_ sender: UIButton) {
+        var userScore = 0, goblinScore = 0
         
-    
+        userScore = randomRoll() + userStrength
+        
+        goblinScore = randomRoll() + baseStrength
+        
+        // TODO look into using switch stament instead
+        
+        if(userScore > goblinScore){
+            //user wins
+           userLbl.text = "You won!"
+           baseHealth -= 2
+           opponentLbl.text = String(baseHealth)
+            
+        } else if (goblinScore > userScore){
+            //goblin wins
+            userLbl.text = "You lost!"
+            userHealth -= 2
+            healthLbl.text = String(userHealth)
+        } else{
+            //tie
+            userLbl.text = "You tied!"
+        }
+        
+        if(isLuckPressed == true){
+            isLuckPressed = false // reset the flag
+        }
+        
     }
     
     @IBAction func btnLuck(_ sender: UIButton) {
         //if luck is pressed, damage will either increase or decrease, depending on the roll
         
+        isLuckPressed = true
+        
+    }
+    
+    func randomRoll() -> Int{
+        var first = 0, second = 0, sum = 0
+        
+        first = dice.nextInt()  //getting the random dice rolls
+        second = dice.nextInt()
+        sum = first + second
+        
+        return sum
         
     }
     
