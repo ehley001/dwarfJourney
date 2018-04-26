@@ -27,7 +27,7 @@ class combatScreen: UIViewController {
     
     var baseStrength = 10, baseHealth = 15
     var userStrength = 0, userHealth = 0  // will later get set to whatever the user rolled
-     
+    
     //Using GK to get a random number for a 6 sided dice
     let dice = GKRandomDistribution.d6();
     
