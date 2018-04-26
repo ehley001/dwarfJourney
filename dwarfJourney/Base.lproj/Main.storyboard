@@ -94,7 +94,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="ycJ-RK-oBd" kind="presentation" id="1nb-TN-XE6"/>
+                                                    <segue destination="ycJ-RK-oBd" kind="show" id="3BB-Oj-wVW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-gT-VmF">
@@ -390,7 +390,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="ycJ-RK-oBd" kind="show" id="oMq-vw-8L7"/>
+                                                    <segue destination="1qt-ek-QMC" kind="show" id="hJW-vE-BtM"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -439,7 +439,4 @@
         <image name="background1" width="1242" height="2208"/>
         <image name="lightPaper" width="640" height="533"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="oMq-vw-8L7"/>
-    </inferredMetricsTieBreakers>
 </document>
