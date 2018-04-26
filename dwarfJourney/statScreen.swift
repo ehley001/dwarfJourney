@@ -25,7 +25,7 @@ class statScreen: UIViewController {
     
     let strengthMod = 5
     let healthMod = 10
-    
+    var strength = 0, lck = 0, hlt = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,15 +48,16 @@ class statScreen: UIViewController {
         sender.isEnabled = false      // disabling roll so you can only roll once
         continueBtn.isEnabled = true  // The user can now move on to the story
         
+        
     }
     
     func calcStrength(){
         var first = 0, second = 0, sum = 0
         
-        first = dice.nextInt()
+        first = dice.nextInt()  //getting the random dice rolls
         second = dice.nextInt()
-        sum = first + second + strengthMod
-        
+        sum = first + second + strengthMod  //adding them together with the modifier
+        strength = sum
         strengthLbl.text = String(sum)
         
     }
@@ -64,22 +65,41 @@ class statScreen: UIViewController {
     func calcHealth(){
         var first = 0, second = 0, sum = 0
         
-        first = dice.nextInt()
+        first = dice.nextInt()  //getting the random dice rolls
         second = dice.nextInt()
-        sum = first + second + healthMod
-        
+        sum = first + second + healthMod  //adding them together with the modifier
+        hlt = sum
         healthLbl.text = String(sum)
     }
     
     func calcLuck(){
         var first = 0, second = 0, sum = 0
         
-        first = dice.nextInt()
+        first = dice.nextInt()  //getting the random dice rolls
         second = dice.nextInt()
-        sum = first + second
-        
+        sum = first + second   //adding them together
+        lck = sum
         luckLbl.text = String(sum)
     }
+    
+    // segue code
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is combatScreen{
+            let vc = segue.destination as? combatScreen
+            vc?.strString = String(strength)
+            vc?.hltString = String(hlt)
+            vc?.lckString = String(lck)
+            vc?.userStrength = strength
+            vc?.userHealth = hlt
+        }
+    }
+
+    //practicing encoding as done in class
+//    override func encode(with aCoder: NSCoder) {
+//        aCoder.encode(strength, forKey:"strength")
+//        aCoder.encode(hlt, forKey:"health")
+//        aCoder.encode(lck, forKey:"luck")
+//    }
     
 }
 

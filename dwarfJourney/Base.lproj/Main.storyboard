@@ -248,6 +248,9 @@
                                                 <state key="normal" title="Fight">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnFight:" destination="ycJ-RK-oBd" eventType="touchUpInside" id="3ru-9V-5pb"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-b8-mQx">
                                                 <rect key="frame" x="0.0" y="47" width="335" height="39"/>
@@ -256,6 +259,9 @@
                                                 <state key="normal" title="Luck">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnLuck:" destination="ycJ-RK-oBd" eventType="touchUpInside" id="OXI-QZ-tdb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -278,6 +284,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zhE-Kg-kjL"/>
                     </view>
+                    <connections>
+                        <outlet property="btnFightOut" destination="aH8-O2-VWD" id="KXD-Vv-mSx"/>
+                        <outlet property="healthLbl" destination="ZFM-m9-mfG" id="zWP-Rg-Dmg"/>
+                        <outlet property="luckBtnOut" destination="lHb-b8-mQx" id="CCH-IO-WIf"/>
+                        <outlet property="luckLbl" destination="JKw-HT-V1W" id="W0H-kz-SI0"/>
+                        <outlet property="opponentLbl" destination="MOM-ej-JNg" id="ePV-nu-1qK"/>
+                        <outlet property="strLbl" destination="u9A-9W-2n0" id="Wba-Nd-K3O"/>
+                        <outlet property="userLbl" destination="4GD-uP-dFo" id="Z5c-DS-SzT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCB-NO-vBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -375,7 +390,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="1qt-ek-QMC" kind="presentation" id="UsQ-KE-R7y"/>
+                                                    <segue destination="ycJ-RK-oBd" kind="show" id="oMq-vw-8L7"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -424,4 +439,7 @@
         <image name="background1" width="1242" height="2208"/>
         <image name="lightPaper" width="640" height="533"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oMq-vw-8L7"/>
+    </inferredMetricsTieBreakers>
 </document>

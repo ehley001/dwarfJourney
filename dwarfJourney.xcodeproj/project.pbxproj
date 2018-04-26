@@ -17,6 +17,7 @@
 		21B1A8952058718600B1F767 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21B1A8932058718600B1F767 /* LaunchScreen.storyboard */; };
 		21B1A8A02058718600B1F767 /* dwarfJourneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B1A89F2058718600B1F767 /* dwarfJourneyTests.swift */; };
 		21B1A8AB2058718600B1F767 /* dwarfJourneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B1A8AA2058718600B1F767 /* dwarfJourneyUITests.swift */; };
+		21F5052D208FE3AF004305AA /* stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F5052C208FE3AF004305AA /* stats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		21B1A8A62058718600B1F767 /* dwarfJourneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dwarfJourneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B1A8AA2058718600B1F767 /* dwarfJourneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dwarfJourneyUITests.swift; sourceTree = "<group>"; };
 		21B1A8AC2058718600B1F767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21F5052C208FE3AF004305AA /* stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				218C4230207439DA004BBD16 /* storyScreen.swift */,
 				21737859207D7ECD0050B27F /* statScreen.swift */,
 				2122CC1B207E9E4E00277BEC /* combatScreen.swift */,
+				21F5052C208FE3AF004305AA /* stats.swift */,
 			);
 			path = dwarfJourney;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				21B1A88B2058718600B1F767 /* AppDelegate.swift in Sources */,
 				2173785A207D7ECD0050B27F /* statScreen.swift in Sources */,
 				2122CC1C207E9E4E00277BEC /* combatScreen.swift in Sources */,
+				21F5052D208FE3AF004305AA /* stats.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
