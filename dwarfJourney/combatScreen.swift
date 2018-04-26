@@ -18,6 +18,8 @@ class combatScreen: UIViewController {
     
     @IBOutlet weak var userLbl: UITextView!
     @IBOutlet weak var opponentLbl: UITextView!
+    @IBOutlet weak var btnFightOut: UIButton!
+    @IBOutlet weak var luckBtnOut: UIButton!
     
     var strString = ""
     var hltString = ""
@@ -65,6 +67,20 @@ class combatScreen: UIViewController {
     @IBAction func btnFight(_ sender: UIButton) {
         var userScore = 0, goblinScore = 0
         
+        let luckRand = Int(arc4random_uniform(2))
+        
+        //checking to see if luck has been pressed
+        if(isLuckPressed == true){
+            if(luckRand == 0){  //user won, so double their strength
+                userStrength = userStrength * 2
+                strLbl.text = String(userStrength)
+                luckBtnOut.setTitle("You are lucky!", for: UIControlState.normal)
+            } else {
+                baseStrength = baseStrength * 2 //goblin won so double their strength
+                luckBtnOut.setTitle("You are unlucky!", for: UIControlState.normal)
+            }
+        }
+        
         userScore = randomRoll() + userStrength
         
         goblinScore = randomRoll() + baseStrength
@@ -92,6 +108,7 @@ class combatScreen: UIViewController {
         
         if(baseHealth < 1){
             opponentLbl.text = "Goblin is dead"
+            
         }
         
         if(userHealth < 1){

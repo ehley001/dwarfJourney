@@ -285,7 +285,9 @@
                         <viewLayoutGuide key="safeArea" id="zhE-Kg-kjL"/>
                     </view>
                     <connections>
+                        <outlet property="btnFightOut" destination="aH8-O2-VWD" id="KXD-Vv-mSx"/>
                         <outlet property="healthLbl" destination="ZFM-m9-mfG" id="zWP-Rg-Dmg"/>
+                        <outlet property="luckBtnOut" destination="lHb-b8-mQx" id="CCH-IO-WIf"/>
                         <outlet property="luckLbl" destination="JKw-HT-V1W" id="W0H-kz-SI0"/>
                         <outlet property="opponentLbl" destination="MOM-ej-JNg" id="ePV-nu-1qK"/>
                         <outlet property="strLbl" destination="u9A-9W-2n0" id="Wba-Nd-K3O"/>
