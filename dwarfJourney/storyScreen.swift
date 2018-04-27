@@ -42,6 +42,14 @@ class storyScreen: UIViewController {
         {
             choiceTwo.isEnabled = true
         }
+        if(index.value.secondChoiceBtn == "Start a new Game?")
+        {
+            choiceOne.isEnabled = false
+        }
+        else
+        {
+            choiceOne.isEnabled = true
+        }
         choiceOne.setTitle(index.value.firstChoiceBtn, for: .normal)
         choiceTwo.setTitle( index.value.secondChoiceBtn, for: .normal)
     }
@@ -55,6 +63,14 @@ class storyScreen: UIViewController {
         else
         {
             choiceTwo.isEnabled = true
+        }
+        if(index.value.secondChoiceBtn == "Start a new Game?")
+        {
+            choiceOne.isEnabled = false
+        }
+        else
+        {
+            choiceOne.isEnabled = true
         }
         choiceOne.setTitle(index.value.firstChoiceBtn, for: .normal)
         choiceTwo.setTitle( index.value.secondChoiceBtn, for: .normal)
