@@ -21,10 +21,8 @@ class combatScreen: UIViewController {
     @IBOutlet weak var btnFightOut: UIButton!
     @IBOutlet weak var luckBtnOut: UIButton!
     
-    var strString = ""
-    var hltString = ""
-    var lckString = ""
     
+    var playerStatsCombat: stats!
     var baseStrength = 10, baseHealth = 15
     var userStrength = 0, userHealth = 0  // will later get set to whatever the user rolled
     
@@ -43,10 +41,20 @@ class combatScreen: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-       strLbl.text = strString
-        healthLbl.text = hltString
-        luckLbl.text = lckString
+       strLbl.text = String(playerStatsCombat.strength)
+        healthLbl.text = String(playerStatsCombat.health)
+        luckLbl.text = String(playerStatsCombat.luck)
         opponentLbl.text = String(baseHealth)
+        luckBtnOut.setTitle("Luck", for: .normal)
+        btnFightOut.setTitle("Fight", for: .normal)
+        if(playerStatsCombat.luck == 0)
+        {
+            luckBtnOut.isEnabled = false
+        }
+        else
+        {
+            luckBtnOut.isEnabled = true
+        }
     }
    
     
@@ -62,71 +70,136 @@ class combatScreen: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func dead(){
+        btnFightOut.setTitle("You have died", for: .normal)
+        btnFightOut.isEnabled = false
+        luckBtnOut.setTitle("Start a new Game?", for: .normal)
+        luckBtnOut.isEnabled = true
+    }
     @IBAction func btnFight(_ sender: UIButton) {
-        var userScore = 0, goblinScore = 0
-        
-        
-        userScore = randomRoll() + userStrength
-        
-        goblinScore = randomRoll() + baseStrength
-        
-        // TODO look into using switch stament instead
-        
-
-        switch userScore {
+        if(luckBtnOut.currentTitle == "")
+        {
+            self.performSegue(withIdentifier: "unwindCombatScreen", sender: Any?.self)
+        }
+        else
+        {
+            var userScore = 0, goblinScore = 0
+            
+            
+            userScore = randomRoll() + playerStatsCombat.strength
+            
+            goblinScore = randomRoll() + baseStrength
+            
+            // TODO look into using switch stament instead
+            
+            
+            switch userScore {
             // user wins
-        case _ where userScore > goblinScore:
-            userLbl.text.append("You won!\n")
-            baseHealth -= 2
-            opponentLbl.text = String(baseHealth)
-            
+            case _ where userScore > goblinScore:
+                userLbl.text.append("You won!\n")
+                baseHealth -= 2
+                opponentLbl.text = String(baseHealth)
+                
             //goblin wins
-        case _ where userScore < goblinScore:
-            userLbl.text.append("You lost!\n")
-            userHealth -= 2
-            healthLbl.text = String(userHealth)
-        
-        default:
-            //tie
-            userLbl.text.append("You tied!\n")
-        }
-        
-        if(baseHealth < 1){
-            opponentLbl.text = "Goblin is dead"
+            case _ where userScore < goblinScore:
+                userLbl.text.append("You lost!\n")
+                playerStatsCombat.health -= 2
+                healthLbl.text = String(playerStatsCombat.health)
+                
+            default:
+                //tie
+                userLbl.text.append("You tied!\n")
+            }
             
+            if(baseHealth < 1){
+                opponentLbl.text = "Goblin is dead"
+                btnFightOut.setTitle("Go back to Story!", for: .normal)
+                luckBtnOut.setTitle("", for: .normal)
+                luckBtnOut.isEnabled = false
+            }
+            
+            if(userHealth < 1){
+                userLbl.text = "You died"
+                dead()
+            }
         }
         
-        if(userHealth < 1){
-            userLbl.text = "You died"
-        }
         
      
      
         
 
     }
-    
-    @IBAction func btnLuck(_ sender: UIButton) {
-        //if luck is pressed, damage will either increase or decrease, depending on the roll
-        let luckRand = Int(arc4random_uniform(2))
-        
-        
-            if(luckRand == 0){  //user won, so double their strength
-                userStrength = userStrength * 2
-                strLbl.text = String(userStrength)
-                userLbl.text = "You are lucky!\n"
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier{
+        case "combatToStats"?:
+            if segue.destination is statScreen{
                 
-            } else {
-                baseStrength = baseStrength * 2 //goblin won so double their strength
-                userLbl.text = "You are unlucky!\n"
             }
-        
-        luckBtnOut.isEnabled = false //can only hit luck once in a fight
-        
+        default:
+            preconditionFailure("unexpected segue identitfier")
+        }
         
     }
-    
+    @IBAction func unwindCombatScreen(segue: UIStoryboardSegue)
+    {
+        
+    }
+    @IBAction func btnLuck(_ sender: UIButton) {
+        if(luckBtnOut.currentTitle == "Start a new Game?")
+        {
+            performSegue(withIdentifier: "combatToStats", sender: Any?.self)
+        }
+        else
+        {
+            var userScore = 0, goblinScore = 0
+            
+            
+            userScore = randomRoll() + playerStatsCombat.strength
+            
+            goblinScore = randomRoll() + baseStrength
+            
+            // TODO look into using switch stament instead
+            
+            
+            switch userScore {
+            // user wins
+            case _ where userScore > goblinScore:
+                userLbl.text.append("You are lucky!\n")
+                baseHealth -= 4
+                opponentLbl.text = String(baseHealth)
+                
+            //goblin wins
+            case _ where userScore < goblinScore:
+                userLbl.text.append("You are unlucky!\n")
+                playerStatsCombat.health -= 4
+                healthLbl.text = String(playerStatsCombat.health)
+                
+            default:
+                //tie
+                userLbl.text.append("You tied!\n")
+            }
+            
+            if(baseHealth < 1){
+                opponentLbl.text = "Goblin is dead"
+                btnFightOut.setTitle("Go back to Story!", for: .normal)
+                luckBtnOut.setTitle("", for: .normal)
+                luckBtnOut.isEnabled = false
+            }
+            
+            if(userHealth < 1){
+                userLbl.text = "You died"
+                dead()
+            }
+            
+            luckBtnOut.isEnabled = false //can only hit luck once in a fight
+            
+            
+        }
+        
+        
+        }
+        
     func randomRoll() -> Int{
         var first = 0, second = 0, sum = 0
         
@@ -137,7 +210,6 @@ class combatScreen: UIViewController {
         return sum
         
     }
-    
     
 }
 

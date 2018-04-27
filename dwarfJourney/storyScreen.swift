@@ -53,7 +53,40 @@ class storyScreen: UIViewController {
         choiceOne.setTitle(index.value.firstChoiceBtn, for: .normal)
         choiceTwo.setTitle( index.value.secondChoiceBtn, for: .normal)
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//
+//    }
+    var playerStats: stats!
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier{
+        case "toCombatScreen"?:
+            if segue.destination is combatScreen{
+                let vc = segue.destination as! combatScreen
+                vc.playerStatsCombat.strength = playerStats.strength
+                vc.playerStatsCombat.health = playerStats.health
+                vc.playerStatsCombat.luck = playerStats.luck
+                
+            }
+        case "toStatsScreen"?:
+            if segue.destination is statScreen{
+                
+            }
+        default:
+            preconditionFailure("unexpected segue identitfier")
+        }
+        
+    }
     @IBAction func choiceTwo(_ sender: UIButton) {
+        if(index.value.fight)
+        {
+            performSegue(withIdentifier: "combatScreen", sender: Any?.self)
+        }
+        else if(index.value.secondChoiceBtn == "Start a new Game?")
+        {
+            performSegue(withIdentifier: "toStatsScreen", sender: Any?.self)
+        }
         index = index.rightChild!
         storyText.text = index.value.story
         if(index.value.secondChoiceBtn == "")
@@ -128,7 +161,7 @@ class storyScreen: UIViewController {
     lazy var nodeaaaaaaaaa = Node(nodeaaaaaaaaaa,Story("As you climb you find that the higher you go the easier it is to climb. Coming to a ledge you find an entrance in the mountain. What do you do?","Keep Climbing?","Enter Mt. Chaos?",false), nodeaaaaaaaaab)
     lazy var nodeaaaaaaaabba = Node(nodeaaaaaaaabbaa,Story("Going to the light you find that it is actually the glint of a goblins armor. Before you could turnaround it sees you and attacks you.","Fight!","",true),nil)
     lazy var nodeaaaaaaaab = Node(nodeaaaaaaaaba,Story("You search the base of the mountain for an entrance. Eventually finding one you enter the mountain. Upon entering the mountain you find yourself at a fork in your path. Which path do you take?","Left?","Right?",false),nodeaaaaaaaabb)
-    lazy var nodeaaaaaaaa = Node(nodeaaaaaaaaa,Story("After resting you continue on through the forest till you find yourself outside of the forest and in front of Mt. Chaos. Treasure awaits on the top of Mt. Chaos. What do you do?","","",false),nodeaaaaaaaab)
+    lazy var nodeaaaaaaaa = Node(nodeaaaaaaaaa,Story("After resting you continue on through the forest till you find yourself outside of the forest and in front of Mt. Chaos. Treasure awaits on the top of Mt. Chaos. What do you do?","Climb Mt. Chaos?","Look for an entrance?",false),nodeaaaaaaaab)
     lazy var nodeaaaaaaa = Node(nodeaaaaaaaa,Story("With great skill and strength you kill the goblin. What do you do next?","Rest?","Continue through forest?",false),nodeaaaaab)
     lazy var nodeaaaaaa = Node(nodeaaaaaaa,Story("As you approach the campfire you find that it is an goblin camp. The goblin catches your scent. Get ready for a fight.","Fight!","",true),nil)
     lazy var nodeaaaaa = Node(nodeaaaaaa,Story("As you enter the forest you can hear and smell a campfire in the distance. What do you do?","Investigate?","Continue through forest?",false),nodeaaaaab)

@@ -22,7 +22,7 @@ class statScreen: UIViewController {
     //Using GK to get a random number for a 6 sided dice
     let dice = GKRandomDistribution.d6();
     
-    
+    var playerStatsStats: stats!
     let strengthMod = 5
     let healthMod = 10
     var strength = 0, lck = 0, hlt = 0
@@ -58,6 +58,7 @@ class statScreen: UIViewController {
         second = dice.nextInt()
         sum = first + second + strengthMod  //adding them together with the modifier
         strength = sum
+        playerStatsStats.strength = sum
         strengthLbl.text = String(sum)
         
     }
@@ -69,6 +70,7 @@ class statScreen: UIViewController {
         second = dice.nextInt()
         sum = first + second + healthMod  //adding them together with the modifier
         hlt = sum
+        playerStatsStats.health = sum
         healthLbl.text = String(sum)
     }
     
@@ -79,19 +81,26 @@ class statScreen: UIViewController {
         second = dice.nextInt()
         sum = first + second   //adding them together
         lck = sum
+        playerStatsStats.luck = sum
         luckLbl.text = String(sum)
     }
     
     // segue code
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is combatScreen{
-            let vc = segue.destination as? combatScreen
-            vc?.strString = String(strength)
-            vc?.hltString = String(hlt)
-            vc?.lckString = String(lck)
-            vc?.userStrength = strength
-            vc?.userHealth = hlt
+        switch segue.identifier{
+        case "toStoryScreen"?:
+            if segue.destination is storyScreen{
+                let vc = segue.destination as! storyScreen
+                vc.playerStats.strength = playerStatsStats.strength
+                vc.playerStats.health = playerStatsStats.health
+                vc.playerStats.luck = playerStatsStats.luck
+                
+            }
+        default:
+            preconditionFailure("unexpected segue identifier")
         }
+        
+        
     }
 
     //practicing encoding as done in class
