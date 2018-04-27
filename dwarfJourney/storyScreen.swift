@@ -32,6 +32,10 @@ class storyScreen: UIViewController {
     }
     
     @IBAction func choiceOne(_ sender: UIButton) {
+        if(index.value.fight)
+        {
+            performSegue(withIdentifier: "toCombatScreen", sender: Any?.self)
+        }
         index = index.leftChild!
         storyText.text = index.value.story
         if(index.value.secondChoiceBtn == "")
@@ -58,15 +62,20 @@ class storyScreen: UIViewController {
 //
 //
 //    }
-    var playerStats: stats!
+    var playerStats: stats! {
+        didSet {
+            
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier{
         case "toCombatScreen"?:
             if segue.destination is combatScreen{
+                let startPlayer = stats(playerStats.strength,playerStats.health,playerStats.luck)
                 let vc = segue.destination as! combatScreen
-                vc.playerStatsCombat.strength = playerStats.strength
-                vc.playerStatsCombat.health = playerStats.health
-                vc.playerStatsCombat.luck = playerStats.luck
+                vc.playerStatsCombat = startPlayer
+                
                 
             }
         case "toStatsScreen"?:
@@ -78,35 +87,39 @@ class storyScreen: UIViewController {
         }
         
     }
+    @IBAction func unwindCombatScreen(segue: UIStoryboardSegue) {
+        
+    }
+    
     @IBAction func choiceTwo(_ sender: UIButton) {
-        if(index.value.fight)
-        {
-            performSegue(withIdentifier: "combatScreen", sender: Any?.self)
-        }
-        else if(index.value.secondChoiceBtn == "Start a new Game?")
+        if(index.value.secondChoiceBtn == "Start a new Game?")
         {
             performSegue(withIdentifier: "toStatsScreen", sender: Any?.self)
         }
-        index = index.rightChild!
-        storyText.text = index.value.story
-        if(index.value.secondChoiceBtn == "")
-        {
-            choiceTwo.isEnabled = false
-        }
         else
         {
-            choiceTwo.isEnabled = true
+            index = index.rightChild!
+            storyText.text = index.value.story
+            if(index.value.secondChoiceBtn == "")
+            {
+                choiceTwo.isEnabled = false
+            }
+            else
+            {
+                choiceTwo.isEnabled = true
+            }
+            if(index.value.secondChoiceBtn == "Start a new Game?")
+            {
+                choiceOne.isEnabled = false
+            }
+            else
+            {
+                choiceOne.isEnabled = true
+            }
+            choiceOne.setTitle(index.value.firstChoiceBtn, for: .normal)
+            choiceTwo.setTitle( index.value.secondChoiceBtn, for: .normal)
         }
-        if(index.value.secondChoiceBtn == "Start a new Game?")
-        {
-            choiceOne.isEnabled = false
-        }
-        else
-        {
-            choiceOne.isEnabled = true
-        }
-        choiceOne.setTitle(index.value.firstChoiceBtn, for: .normal)
-        choiceTwo.setTitle( index.value.secondChoiceBtn, for: .normal)
+        
     }
     class Node<Story>{
         var value: Story

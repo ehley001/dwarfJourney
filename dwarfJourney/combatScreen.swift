@@ -23,7 +23,7 @@ class combatScreen: UIViewController {
     
     
     var playerStatsCombat: stats!
-    var baseStrength = 10, baseHealth = 15
+    var baseStrength = 9, baseHealth = 12
     var userStrength = 0, userHealth = 0  // will later get set to whatever the user rolled
     
     //Using GK to get a random number for a 6 sided dice
@@ -57,7 +57,6 @@ class combatScreen: UIViewController {
         }
     }
    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +117,7 @@ class combatScreen: UIViewController {
                 luckBtnOut.isEnabled = false
             }
             
-            if(userHealth < 1){
+            if(playerStatsCombat.health < 1){
                 userLbl.text = "You died"
                 dead()
             }
@@ -136,15 +135,16 @@ class combatScreen: UIViewController {
             if segue.destination is statScreen{
                 
             }
+        case "unwindCombatScreen"?:
+            if segue.destination is storyScreen{
+                
+            }
         default:
             preconditionFailure("unexpected segue identitfier")
         }
         
     }
-    @IBAction func unwindCombatScreen(segue: UIStoryboardSegue)
-    {
-        
-    }
+    
     @IBAction func btnLuck(_ sender: UIButton) {
         if(luckBtnOut.currentTitle == "Start a new Game?")
         {
@@ -187,7 +187,7 @@ class combatScreen: UIViewController {
                 luckBtnOut.isEnabled = false
             }
             
-            if(userHealth < 1){
+            if(playerStatsCombat.health < 1){
                 userLbl.text = "You died"
                 dead()
             }
