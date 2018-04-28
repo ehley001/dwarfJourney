@@ -14,7 +14,7 @@ class stats: NSObject{
     var health: Int
     var luck: Int
     
-    init(str: Int, hlt: Int, lck: Int) {
+    init(_ str: Int,_ hlt: Int,_ lck: Int) {
         self.strength = str
         self.health = hlt
         self.luck = lck

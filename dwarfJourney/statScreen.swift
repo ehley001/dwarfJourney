@@ -22,7 +22,6 @@ class statScreen: UIViewController {
     //Using GK to get a random number for a 6 sided dice
     let dice = GKRandomDistribution.d6();
     
-    
     let strengthMod = 5
     let healthMod = 10
     var strength = 0, lck = 0, hlt = 0
@@ -84,14 +83,19 @@ class statScreen: UIViewController {
     
     // segue code
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is combatScreen{
-            let vc = segue.destination as? combatScreen
-            vc?.strString = String(strength)
-            vc?.hltString = String(hlt)
-            vc?.lckString = String(lck)
-            vc?.userStrength = strength
-            vc?.userHealth = hlt
+        switch segue.identifier{
+        case "toStoryScreen"?:
+            if segue.destination is storyScreen{
+                let statsPlayer = stats(strength,hlt,lck)
+                let vc = segue.destination as! storyScreen
+                vc.playerStats = statsPlayer
+                
+            }
+        default:
+            preconditionFailure("unexpected segue identifier")
         }
+        
+        
     }
 
     //practicing encoding as done in class
