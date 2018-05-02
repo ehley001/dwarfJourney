@@ -10,17 +10,38 @@ import Foundation
 
 import UIKit
 
+
 class storyScreen: UIViewController {
-    lazy var index = nodeRoot
+    var appDelegate = AppDelegate.shared().story
+    
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-         index = nodeRoot
+        appDelegate.leftChild = nodeRoot.leftChild
+        appDelegate.value = nodeRoot.value
+        appDelegate.rightChild = nodeRoot.rightChild
+        
         //let beginning = nodeRoot
-        storyText.text = index.value.story
-        choiceOne.setTitle(index.value.firstChoiceBtn, for: .normal)
-        choiceTwo.setTitle( index.value.secondChoiceBtn, for: .normal)
+        storyText.text = appDelegate.value.story
+        choiceOne.setTitle(appDelegate.value.firstChoiceBtn, for: .normal)
+        choiceTwo.setTitle( appDelegate.value.secondChoiceBtn, for: .normal)
        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let decoded = defaults.object(forKey: "story") as? Data{
+            let decodedStory = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Node
+            appDelegate.leftChild = decodedStory.leftChild
+            appDelegate.value = decodedStory.value
+            appDelegate.rightChild = decodedStory.rightChild
+            storyText.text = appDelegate.value.story
+            choiceOne.setTitle(appDelegate.value.firstChoiceBtn, for: .normal)
+            choiceTwo.setTitle( appDelegate.value.secondChoiceBtn, for: .normal)
+        }
+        
+            
+        
     }
     @IBOutlet weak var choiceTwo: UIButton!
     
@@ -32,13 +53,15 @@ class storyScreen: UIViewController {
     }
     
     @IBAction func choiceOne(_ sender: UIButton) {
-        if(index.value.fight)
+        if(appDelegate.value.fight)
         {
             performSegue(withIdentifier: "toCombatScreen", sender: Any?.self)
         }
-        index = index.leftChild!
-        storyText.text = index.value.story
-        if(index.value.secondChoiceBtn == "")
+        appDelegate.leftChild = appDelegate.leftChild!.leftChild
+        appDelegate.rightChild = appDelegate.leftChild!.rightChild
+        appDelegate.value = appDelegate.leftChild!.value
+        storyText.text = appDelegate.value.story
+        if(appDelegate.value.secondChoiceBtn == "")
         {
             choiceTwo.isEnabled = false
         }
@@ -46,7 +69,7 @@ class storyScreen: UIViewController {
         {
             choiceTwo.isEnabled = true
         }
-        if(index.value.secondChoiceBtn == "Start a new Game?")
+        if(appDelegate.value.secondChoiceBtn == "Start a new Game?")
         {
             choiceOne.isEnabled = false
         }
@@ -54,8 +77,8 @@ class storyScreen: UIViewController {
         {
             choiceOne.isEnabled = true
         }
-        choiceOne.setTitle(index.value.firstChoiceBtn, for: .normal)
-        choiceTwo.setTitle( index.value.secondChoiceBtn, for: .normal)
+        choiceOne.setTitle(appDelegate.value.firstChoiceBtn, for: .normal)
+        choiceTwo.setTitle( appDelegate.value.secondChoiceBtn, for: .normal)
     }
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
@@ -92,15 +115,17 @@ class storyScreen: UIViewController {
     }
     
     @IBAction func choiceTwo(_ sender: UIButton) {
-        if(index.value.secondChoiceBtn == "Start a new Game?")
+        if(appDelegate.value.secondChoiceBtn == "Start a new Game?")
         {
             performSegue(withIdentifier: "toStatsScreen", sender: Any?.self)
         }
         else
         {
-            index = index.rightChild!
-            storyText.text = index.value.story
-            if(index.value.secondChoiceBtn == "")
+            appDelegate.leftChild = appDelegate.rightChild!.leftChild
+            appDelegate.rightChild = appDelegate.rightChild!.rightChild
+            appDelegate.value = appDelegate.rightChild!.value
+            storyText.text = appDelegate.value.story
+            if(appDelegate.value.secondChoiceBtn == "")
             {
                 choiceTwo.isEnabled = false
             }
@@ -108,7 +133,7 @@ class storyScreen: UIViewController {
             {
                 choiceTwo.isEnabled = true
             }
-            if(index.value.secondChoiceBtn == "Start a new Game?")
+            if(appDelegate.value.secondChoiceBtn == "Start a new Game?")
             {
                 choiceOne.isEnabled = false
             }
@@ -116,36 +141,13 @@ class storyScreen: UIViewController {
             {
                 choiceOne.isEnabled = true
             }
-            choiceOne.setTitle(index.value.firstChoiceBtn, for: .normal)
-            choiceTwo.setTitle( index.value.secondChoiceBtn, for: .normal)
+            choiceOne.setTitle(appDelegate.value.firstChoiceBtn, for: .normal)
+            choiceTwo.setTitle( appDelegate.value.secondChoiceBtn, for: .normal)
         }
         
     }
-    class Node<Story>{
-        var value: Story
-        var leftChild: Node?
-        var rightChild: Node?
-        
-        init(_ left: Node?,_ value: Story,_ right: Node?){
-            self.value = value
-            self.leftChild = left
-            self.rightChild = right
-        }
-    }
-    class Story{
-        var story: String
-        var firstChoiceBtn: String
-        var secondChoiceBtn: String
-        var fight: Bool
-        
-        init(_ story: String, _ firstChoice: String, _ secondChoice: String,_ fight: Bool)
-        {
-            self.story = story
-            self.firstChoiceBtn = firstChoice
-            self.secondChoiceBtn = secondChoice
-            self.fight = fight
-        }
-    }
+    
+    
     
     
     // Death/Victory Leaf Nodes

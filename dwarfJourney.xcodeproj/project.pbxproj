@@ -18,6 +18,8 @@
 		21B1A8A02058718600B1F767 /* dwarfJourneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B1A89F2058718600B1F767 /* dwarfJourneyTests.swift */; };
 		21B1A8AB2058718600B1F767 /* dwarfJourneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B1A8AA2058718600B1F767 /* dwarfJourneyUITests.swift */; };
 		21F5052D208FE3AF004305AA /* stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F5052C208FE3AF004305AA /* stats.swift */; };
+		40A2BE582099497C00C94912 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2BE572099497C00C94912 /* Story.swift */; };
+		40A2BE5A20994A1500C94912 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2BE5920994A1500C94912 /* Node.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		21B1A8AA2058718600B1F767 /* dwarfJourneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dwarfJourneyUITests.swift; sourceTree = "<group>"; };
 		21B1A8AC2058718600B1F767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21F5052C208FE3AF004305AA /* stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stats.swift; sourceTree = "<group>"; };
+		40A2BE572099497C00C94912 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		40A2BE5920994A1500C94912 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 				21737859207D7ECD0050B27F /* statScreen.swift */,
 				2122CC1B207E9E4E00277BEC /* combatScreen.swift */,
 				21F5052C208FE3AF004305AA /* stats.swift */,
+				40A2BE572099497C00C94912 /* Story.swift */,
+				40A2BE5920994A1500C94912 /* Node.swift */,
 			);
 			path = dwarfJourney;
 			sourceTree = "<group>";
@@ -271,8 +277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A2BE582099497C00C94912 /* Story.swift in Sources */,
 				218C4231207439DA004BBD16 /* storyScreen.swift in Sources */,
 				21B1A88D2058718600B1F767 /* ViewController.swift in Sources */,
+				40A2BE5A20994A1500C94912 /* Node.swift in Sources */,
 				21B1A88B2058718600B1F767 /* AppDelegate.swift in Sources */,
 				2173785A207D7ECD0050B27F /* statScreen.swift in Sources */,
 				2122CC1C207E9E4E00277BEC /* combatScreen.swift in Sources */,

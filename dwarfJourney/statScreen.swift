@@ -11,14 +11,15 @@ import UIKit
 import GameplayKit
 
 class statScreen: UIViewController {
-    
+    let appDelegate = AppDelegate.shared().playerStats
     // label declarations
     @IBOutlet weak var strengthLbl: UILabel!
     @IBOutlet weak var healthLbl: UILabel!
     @IBOutlet weak var luckLbl: UILabel!
+    @IBOutlet var rollBtn: UIButton!
     
     @IBOutlet weak var continueBtn: UIButton!
-    
+    var defaults = UserDefaults.standard
     //Using GK to get a random number for a 6 sided dice
     let dice = GKRandomDistribution.d6();
     
@@ -33,7 +34,21 @@ class statScreen: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let decoded = defaults.object(forKey: "stat") as? Data{
+            let decodedStory = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! stats
+            strength = decodedStory.strength
+            lck = decodedStory.luck
+            hlt = decodedStory.health
+            strengthLbl.text = String(strength)
+            healthLbl.text = String(hlt)
+            luckLbl.text = String(lck)
+            continueBtn.isEnabled = true
+            rollBtn.isEnabled = false
+            
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,6 +72,7 @@ class statScreen: UIViewController {
         second = dice.nextInt()
         sum = first + second + strengthMod  //adding them together with the modifier
         strength = sum
+        appDelegate.strength = sum
         strengthLbl.text = String(sum)
         
     }
@@ -68,6 +84,7 @@ class statScreen: UIViewController {
         second = dice.nextInt()
         sum = first + second + healthMod  //adding them together with the modifier
         hlt = sum
+        appDelegate.health = sum
         healthLbl.text = String(sum)
     }
     
@@ -78,6 +95,7 @@ class statScreen: UIViewController {
         second = dice.nextInt()
         sum = first + second   //adding them together
         lck = sum
+        appDelegate.luck = sum
         luckLbl.text = String(sum)
     }
     

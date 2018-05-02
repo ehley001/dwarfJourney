@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Copperplate.ttc">
+            <string>Copperplate</string>
+            <string>Copperplate-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="dwarfJourney" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="dwarfJourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,7 +69,7 @@
         <!--Story Screen-->
         <scene sceneID="8oz-HG-hZK">
             <objects>
-                <viewController id="1qt-ek-QMC" customClass="storyScreen" customModule="dwarfJourney" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoadScreen" id="1qt-ek-QMC" customClass="storyScreen" customModule="dwarfJourney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3NN-Pb-rr0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -439,6 +445,7 @@
                         <outlet property="continueBtn" destination="hyp-rp-eZE" id="eqN-hc-2UJ"/>
                         <outlet property="healthLbl" destination="TWa-vC-qW5" id="Ebq-ko-tdh"/>
                         <outlet property="luckLbl" destination="33X-tA-ORI" id="U2Z-ND-opu"/>
+                        <outlet property="rollBtn" destination="erc-MA-hpk" id="gNt-lR-wZh"/>
                         <outlet property="strengthLbl" destination="0fy-9W-Ok8" id="scz-Pe-VFV"/>
                     </connections>
                 </viewController>
@@ -454,6 +461,6 @@
         <image name="lightPaper" width="640" height="533"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xuX-eP-Uv0"/>
+        <segue reference="l7Y-B4-FtT"/>
     </inferredMetricsTieBreakers>
 </document>
