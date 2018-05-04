@@ -30,6 +30,7 @@ class storyScreen: UIViewController {
        
     }
     override func viewWillAppear(_ animated: Bool) {
+        
         if(appDelegateNeutral.restart)
         {
             appDelegateNeutral.restart = false
@@ -64,6 +65,7 @@ class storyScreen: UIViewController {
         }
         else if let decoded = defaults.object(forKey: "story") as? Data{
             let decodedStory = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Node
+            
             appDelegate.story.leftChild = decodedStory.leftChild
             appDelegate.story.value = decodedStory.value
             appDelegate.story.rightChild = decodedStory.rightChild

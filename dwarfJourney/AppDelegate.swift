@@ -29,13 +29,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        let success = playerStats.saveChanges()
-        let success2 = story.saveChanges()
-        if(success && success2){
-            print("Saved Story and Stats")
-        }else{
-            print("Could not Story and Stats")
+        if(playerStats.strength != 1)
+        {
+            let success = playerStats.saveChanges()
+            if(success){
+                print("Saved Stats")
+            }else{
+                print("Could not save Stats")
+            }
         }
+       
+        if(story.value.story !=  ""){
+            let success2 = story.saveChanges()
+            if(success2)
+            {
+                print("Saved Story")
+            }
+            else{
+                print("Could not save Story")
+            }
+        }
+        
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
