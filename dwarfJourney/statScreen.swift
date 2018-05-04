@@ -11,7 +11,8 @@ import UIKit
 import GameplayKit
 
 class statScreen: UIViewController {
-    let appDelegate = AppDelegate.shared().playerStats
+    let appDelegate = AppDelegate.shared()
+    let appDelegateNeutral = AppDelegate.shared()
     // label declarations
     @IBOutlet weak var strengthLbl: UILabel!
     @IBOutlet weak var healthLbl: UILabel!
@@ -36,10 +37,16 @@ class statScreen: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         
-        if let decoded = defaults.object(forKey: "stat") as? Data{
+        if(appDelegateNeutral.restart){
+            
+        }
+        else if let decoded = defaults.object(forKey: "stat") as? Data{
             let decodedStory = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! stats
+            appDelegate.playerStats.strength = decodedStory.strength
             strength = decodedStory.strength
+            appDelegate.playerStats.health = decodedStory.health
             lck = decodedStory.luck
+            appDelegate.playerStats.luck = decodedStory.luck
             hlt = decodedStory.health
             strengthLbl.text = String(strength)
             healthLbl.text = String(hlt)
@@ -72,7 +79,7 @@ class statScreen: UIViewController {
         second = dice.nextInt()
         sum = first + second + strengthMod  //adding them together with the modifier
         strength = sum
-        appDelegate.strength = sum
+        appDelegate.playerStats.strength = sum
         strengthLbl.text = String(sum)
         
     }
@@ -84,7 +91,7 @@ class statScreen: UIViewController {
         second = dice.nextInt()
         sum = first + second + healthMod  //adding them together with the modifier
         hlt = sum
-        appDelegate.health = sum
+        appDelegate.playerStats.health = sum
         healthLbl.text = String(sum)
     }
     
@@ -95,7 +102,7 @@ class statScreen: UIViewController {
         second = dice.nextInt()
         sum = first + second   //adding them together
         lck = sum
-        appDelegate.luck = sum
+        appDelegate.playerStats.luck = sum
         luckLbl.text = String(sum)
     }
     

@@ -21,7 +21,7 @@ class combatScreen: UIViewController {
     @IBOutlet weak var btnFightOut: UIButton!
     @IBOutlet weak var luckBtnOut: UIButton!
     
-    
+    var appDelegateNeutral = AppDelegate.shared()
     var playerStatsCombat: stats!
     var baseStrength = 9, baseHealth = 12
     var userStrength = 0, userHealth = 0  // will later get set to whatever the user rolled
@@ -74,6 +74,7 @@ class combatScreen: UIViewController {
         btnFightOut.isEnabled = false
         luckBtnOut.setTitle("Start a new Game?", for: .normal)
         luckBtnOut.isEnabled = true
+        appDelegateNeutral.restart = true
     }
     @IBAction func btnFight(_ sender: UIButton) {
         if(luckBtnOut.currentTitle == "")
@@ -103,6 +104,7 @@ class combatScreen: UIViewController {
             case _ where userScore < goblinScore:
                 userLbl.text.append("You lost!\n")
                 playerStatsCombat.health -= 2
+                appDelegateNeutral.playerStats.health -= 2
                 healthLbl.text = String(playerStatsCombat.health)
                 
             default:
@@ -173,6 +175,7 @@ class combatScreen: UIViewController {
             case _ where userScore < goblinScore:
                 userLbl.text.append("You are unlucky!\n")
                 playerStatsCombat.health -= 4
+                appDelegateNeutral.playerStats.health -= 4
                 healthLbl.text = String(playerStatsCombat.health)
                 
             default:
