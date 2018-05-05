@@ -44,7 +44,7 @@ class combatScreen: UIViewController {
        strLbl.text = String(playerStatsCombat.strength)
         healthLbl.text = String(playerStatsCombat.health)
         luckLbl.text = String(playerStatsCombat.luck)
-        opponentLbl.text = String(baseHealth)
+        opponentLbl.text = "Health:" + String(baseHealth)
         luckBtnOut.setTitle("Luck", for: .normal)
         btnFightOut.setTitle("Fight", for: .normal)
         if(playerStatsCombat.luck == 0)
@@ -98,7 +98,7 @@ class combatScreen: UIViewController {
             case _ where userScore > goblinScore:
                 userLbl.text.append("You won!\n")
                 baseHealth -= 2
-                opponentLbl.text = String(baseHealth)
+                opponentLbl.text = "Health:" + String(baseHealth)
                 
             //goblin wins
             case _ where userScore < goblinScore:

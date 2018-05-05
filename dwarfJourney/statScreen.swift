@@ -17,6 +17,7 @@ class statScreen: UIViewController {
     @IBOutlet weak var strengthLbl: UILabel!
     @IBOutlet weak var healthLbl: UILabel!
     @IBOutlet weak var luckLbl: UILabel!
+    @IBOutlet weak var instructionLbl: UITextView!
     @IBOutlet var rollBtn: UIButton!
     
     @IBOutlet weak var continueBtn: UIButton!
@@ -31,6 +32,7 @@ class statScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         continueBtn.isEnabled = false
+        instructionLbl.text = "Welcome\nYour journey begins with a roll of the dice.\nWhen luck is used in combat, if you win you do double damage, if you lose, you lose double health"
         
         // Do any additional setup after loading the view, typically from a nib.
        
