@@ -30,7 +30,7 @@ class storyScreen: UIViewController {
        
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        defaults.removeObject(forKey: "story")
         if(appDelegateNeutral.restart)
         {
             appDelegateNeutral.restart = false
@@ -163,11 +163,18 @@ class storyScreen: UIViewController {
         }
         else
         {
-            appDelegate.story = appDelegate.story.rightChild!
+            if(appDelegate.story.value.secondChoiceBtn == ""){
+                choiceTwo.isEnabled = false
+            }
+            else{
+                appDelegate.story = appDelegate.story.rightChild!
+                storyText.text = appDelegate.story.value.story
+            }
+            
 //            appDelegate.leftChild = appDelegate.leftChild!
 //            appDelegate.rightChild = appDelegate.leftChild!.rightChild
 //            appDelegate.value = appDelegate.rightChild!.value
-            storyText.text = appDelegate.story.value.story
+            
             if(appDelegate.story.value.secondChoiceBtn == "")
             {
                 choiceTwo.isEnabled = false

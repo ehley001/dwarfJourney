@@ -38,7 +38,7 @@ class statScreen: UIViewController {
        
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        defaults.removeObject(forKey: "stat")
         if(appDelegateNeutral.restart){
             
         }

@@ -150,10 +150,14 @@ class combatScreen: UIViewController {
     @IBAction func btnLuck(_ sender: UIButton) {
         if(luckBtnOut.currentTitle == "Start a new Game?")
         {
+            luckBtnOut.isEnabled = true
             performSegue(withIdentifier: "combatToStats", sender: Any?.self)
         }
+        
         else
         {
+            
+            
             var userScore = 0, goblinScore = 0
             
             
@@ -163,7 +167,8 @@ class combatScreen: UIViewController {
             
             // TODO look into using switch stament instead
             
-            
+            appDelegateNeutral.playerStats.luck = appDelegateNeutral.playerStats.luck - 1
+            luckLbl.text = String(appDelegateNeutral.playerStats.luck)
             switch userScore {
             // user wins
             case _ where userScore > goblinScore:
@@ -195,9 +200,16 @@ class combatScreen: UIViewController {
                 dead()
             }
             
-            luckBtnOut.isEnabled = false //can only hit luck once in a fight
+            //luckBtnOut.isEnabled = false //can only hit luck once in a fight
             
-            
+            if(appDelegateNeutral.playerStats.luck == 0)
+            {
+                luckBtnOut.isEnabled = false
+            }
+            else
+            {
+                luckBtnOut.isEnabled = true
+            }
         }
         
         
